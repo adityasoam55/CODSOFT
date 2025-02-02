@@ -1,9 +1,14 @@
 import React from 'react';
+import MainImage from './MainImage';
+import AboutSection from './AboutSection';
+import MainVideo from './MainVideo'
 
 function MainPage() {
   return (
     <div>
-      <h1>this is main page</h1>
+      <MainImage/>
+      <AboutSection />
+      <MainVideo />
     </div>
   )
 }
