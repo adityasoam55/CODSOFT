@@ -1,11 +1,17 @@
 import React from 'react'
+import MainPage from './components/MainPage'
+import NavBar from './components/NavBar'
+import { Route, Routes } from 'react-router-dom'
 
 
 function App() {
 
   return (
     <div>
-      <h1 className='bg-indigo-500'>Hello guys</h1>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+      </Routes>
     </div>
   )
 }
