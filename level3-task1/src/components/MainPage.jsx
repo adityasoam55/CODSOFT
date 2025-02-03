@@ -4,14 +4,18 @@ import AboutSection from './AboutSection';
 import MainVideo from './MainVideo'
 import BrandsLogo from './BrandsLogo';
 import NoticePage from './NoticePage';
+import AsideFirst from './AsideFirst';
+import AsideSecond from './AsideSecond';
 
 function MainPage() {
   return (
-    <div>
+    <div className='overflow-x-hidden'>
       <MainImage/>
       <AboutSection />
       <MainVideo />
       <BrandsLogo />
+      <AsideFirst />
+      <AsideSecond />
       <NoticePage />
     </div>
   )
