@@ -3,6 +3,7 @@ import MainImage from './MainImage';
 import AboutSection from './AboutSection';
 import MainVideo from './MainVideo'
 import BrandsLogo from './BrandsLogo';
+import NoticePage from './NoticePage';
 
 function MainPage() {
   return (
@@ -11,6 +12,7 @@ function MainPage() {
       <AboutSection />
       <MainVideo />
       <BrandsLogo />
+      <NoticePage />
     </div>
   )
 }
