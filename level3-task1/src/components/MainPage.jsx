@@ -2,6 +2,7 @@ import React from 'react';
 import MainImage from './MainImage';
 import AboutSection from './AboutSection';
 import MainVideo from './MainVideo'
+import BrandsLogo from './BrandsLogo';
 
 function MainPage() {
   return (
@@ -9,6 +10,7 @@ function MainPage() {
       <MainImage/>
       <AboutSection />
       <MainVideo />
+      <BrandsLogo />
     </div>
   )
 }
