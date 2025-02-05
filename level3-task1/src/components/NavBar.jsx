@@ -24,62 +24,67 @@ function NavBar({cartValue}) {
         </div>
 
         <div className="pl-2 text-3xl font-bold">
-          <a href="#">TryCasuals</a>
+          <a href="/">TryCasuals</a>
         </div>
 
         <div className="hidden md:flex flex-wrap justify-center text-center text-sm gap-8 px-2 hover:cursor-pointer">
-          <a href="#" className="hover:underline underline-offset-8">
+          <Link to="/" className="hover:underline underline-offset-8">
             HOME
-          </a>
+          </Link>
           <Link to="/allproducts/" className="hover:underline underline-offset-8">
             ALL PRODUCTS
           </Link>
-          <a href="#" className="hover:underline underline-offset-8">
+          <Link to="/categorylist/" className="hover:underline underline-offset-8">
             CATEGORIES
-          </a>
-          <a className="hover:underline underline-offset-8">
+          </Link>
+          <Link className="hover:underline underline-offset-8">
             MY GIRLFRIENDS BACK
-          </a>
+          </Link>
         </div>
 
         <div className="flex gap-4 text-3xl pr-2 hover:cursor-pointer">
-          <a href="#" aria-label="User Profile">
+          <Link to="/login/" aria-label="User Profile">
             <IoPersonOutline />
-          </a>
-          <a href="#" aria-label="Shopping Bag">
+          </Link>
+          <Link to="/cartpage/" aria-label="Shopping Bag">
             <div className='relative flex justify-center'>
               <BsHandbag />
               <span className='absolute top-2.5 text-sm font-medium'>{cartValue}</span>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
 
       {isMobileMenuOpen && (
         <div className="absolute top-full left-0 right-0 bg-gray-400 bg-opacity-60 text-white z-50 w-full flex flex-col items-start py-4 px-4 gap-4 shadow-lg">
-          <a
-            href="#"
+          <Link
+            to="/"
             className="hover:underline underline-offset-8 text-lg"
+            onClick={() => setIsMobileMenuOpen(false)}
           >
             Home
-          </a>
-          <Link to="/allproducts/"
+          </Link>
+          <Link
+            to="/allproducts/"
             className="hover:underline underline-offset-8 text-lg"
+            onClick={() => setIsMobileMenuOpen(false)}
           >
             ALL PRODUCTS
           </Link>
-          <a
-            href="#"
+          <Link
+            to="/categorylist/"
             className="hover:underline underline-offset-8 text-lg"
+            onClick={() => setIsMobileMenuOpen(false)}
           >
             CATEGORIES
-          </a>
-          <a
+          </Link>
+          <Link
             href="#"
             className="hover:underline underline-offset-8 text-lg"
+            onClick={() => setIsMobileMenuOpen(false)}
           >
             MY GIRLFRIENDS BACK
-          </a>
+          </Link>
         </div>
       )}
     </div>
