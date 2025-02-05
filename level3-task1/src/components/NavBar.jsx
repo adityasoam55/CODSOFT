@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BsHandbag } from 'react-icons/bs';
 import { IoPersonOutline } from 'react-icons/io5';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 function NavBar({cartValue}) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -30,9 +31,9 @@ function NavBar({cartValue}) {
           <a href="#" className="hover:underline underline-offset-8">
             HOME
           </a>
-          <a href="#" className="hover:underline underline-offset-8">
+          <Link to="/allproducts/" className="hover:underline underline-offset-8">
             ALL PRODUCTS
-          </a>
+          </Link>
           <a href="#" className="hover:underline underline-offset-8">
             CATEGORIES
           </a>
@@ -62,12 +63,11 @@ function NavBar({cartValue}) {
           >
             Home
           </a>
-          <a
-            href="#"
+          <Link to="/allproducts/"
             className="hover:underline underline-offset-8 text-lg"
           >
             ALL PRODUCTS
-          </a>
+          </Link>
           <a
             href="#"
             className="hover:underline underline-offset-8 text-lg"
