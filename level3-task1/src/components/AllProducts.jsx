@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { getAllProducts } from './api';
 import Product from './Product';
 import Loading from './Loading';
-// import Input from './Input';
+import Input from './Input';
 
 function AllProducts() {
   const [products, setProducts] = useState([]);
@@ -45,12 +45,34 @@ function AllProducts() {
     }
   }, [sort])
 
-  if(loading){
+
+
+  if (loading) {
     return <Loading />
   }
 
   return (
     <div className="bg-white mx-auto max-w-2xl px-4 py-8 sm:px-6 lg:max-w-7xl lg:px-8">
+
+      <div className="flex gap-2 justify-between items-center md:justify-end md:gap-4 mb-6">
+        <Input
+          type="text"
+          placeholder="Search products..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}
+        />
+
+        <select
+          className="border border-gray-300 bg-gray-200 outline-none rounded-lg px-3 py-1.5"
+          value={sort}
+          onChange={(e) => setSort(e.target.value)}
+        >
+          <option value="default">Default sort</option>
+          <option value="price-high-to-low">Price: High to Low</option>
+          <option value="price-low-to-high">Price: Low to High</option>
+          <option value="name">Sort by Name</option>
+        </select>
+      </div>
 
       <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
         {filteredProducts.map((product) => (
