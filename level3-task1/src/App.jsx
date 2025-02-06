@@ -6,6 +6,7 @@ import Footer from './components/Footer'
 import AllProducts from './components/AllProducts'
 import CategoryList from './components/CategoryList'
 import CategoryProducts from './components/CategoryProducts'
+import ProductDetails from './components/ProductDetails'
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/allproducts" element={<AllProducts />} />
+        <Route path="/productdetails/:id" element={<ProductDetails  />} />
         <Route path="/categorylist/" element={<CategoryList />} />
         <Route path="/category/:category" element={<CategoryProducts />} />
       </Routes>
