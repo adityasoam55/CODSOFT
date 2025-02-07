@@ -8,6 +8,7 @@ import CategoryList from './components/CategoryList'
 import CategoryProducts from './components/CategoryProducts'
 import ProductDetails from './components/ProductDetails'
 import Login from './components/Login'
+import Signup from './components/Signup'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/categorylist/" element={<CategoryList />} />
         <Route path="/category/:category" element={<CategoryProducts />} />
         <Route path="/login/" element={<Login />} />
+        <Route path="/signup/" element={<Signup />} />
       </Routes>
       <Footer />
     </div>
