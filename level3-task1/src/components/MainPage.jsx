@@ -6,12 +6,14 @@ import BrandsLogo from './BrandsLogo';
 import NoticePage from './NoticePage';
 import AsideFirst from './AsideFirst';
 import AsideSecond from './AsideSecond';
+import MustHavePicks from './MustHavePicks';
 
 function MainPage() {
   return (
     <div className='overflow-x-hidden'>
       <MainImage/>
       <AboutSection />
+      <MustHavePicks />
       <MainVideo />
       <BrandsLogo />
       <AsideFirst />
