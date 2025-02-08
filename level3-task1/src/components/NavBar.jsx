@@ -4,7 +4,7 @@ import { IoPersonOutline } from 'react-icons/io5';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
-function NavBar({cartValue}) {
+function NavBar({productCount}) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -49,7 +49,7 @@ function NavBar({cartValue}) {
           <Link to="/cartpage/" aria-label="Shopping Bag">
             <div className='relative flex justify-center'>
               <BsHandbag />
-              <span className='absolute top-2.5 text-sm font-medium'>{cartValue}</span>
+              <span className='absolute top-2.5 text-sm font-medium'>{productCount}</span>
             </div>
           </Link>
         </div>
