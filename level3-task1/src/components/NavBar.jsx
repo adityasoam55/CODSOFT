@@ -27,7 +27,7 @@ function NavBar({cartValue}) {
           <a href="/">TryCasuals</a>
         </div>
 
-        <div className="hidden md:flex flex-wrap justify-center text-center text-sm gap-8 px-2 hover:cursor-pointer">
+        <div className="hidden md:flex flex-wrap justify-center text-center text-lg gap-8 px-2 hover:cursor-pointer">
           <Link to="/" className="hover:underline underline-offset-8">
             HOME
           </Link>
@@ -36,9 +36,6 @@ function NavBar({cartValue}) {
           </Link>
           <Link to="/categorylist/" className="hover:underline underline-offset-8">
             CATEGORIES
-          </Link>
-          <Link className="hover:underline underline-offset-8">
-            MY GIRLFRIENDS BACK
           </Link>
         </div>
 
@@ -77,13 +74,6 @@ function NavBar({cartValue}) {
             onClick={() => setIsMobileMenuOpen(false)}
           >
             CATEGORIES
-          </Link>
-          <Link
-            href="#"
-            className="hover:underline underline-offset-8 text-lg"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            MY GIRLFRIENDS BACK
           </Link>
         </div>
       )}
