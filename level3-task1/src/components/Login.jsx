@@ -1,13 +1,19 @@
 import { Form, Formik, useFormik } from "formik";
-import Input, { FormikInput } from "./Input";
+import { FormikInput } from "./Input";
 import React from "react";
 import * as Yup from 'yup';
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { loginUser } from "./api";
 
-function Login() {
+function Login({ setUser, user }) {
 
-    function callLoginAPI({email, password}) {
-        console.log("calling login API", email, password)
+    function callLoginAPI(values) {
+        loginUser(values).then((resp) => {
+            const { user, token } = resp.data;
+            localStorage.setItem('userToken', token);
+            setUser(user);
+            // console.log(user)
+        })
     }
 
     const loginSchema = Yup.object().shape({
@@ -20,11 +26,17 @@ function Login() {
         password: ""
     }
 
+    if (user) {
+        return <Navigate to="/" />
+    }
+
     return (
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-8 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <h2 className="mt-8 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
-                    Sign in to your account
+                    Sign in to your account <br />
+                    <span className="text-sm">OR</span> <br />
+                    <span className="text-sm font-normal">{`Use these credentials to login {email: one@one.com, password: 12345678}`}</span>
                 </h2>
             </div>
 

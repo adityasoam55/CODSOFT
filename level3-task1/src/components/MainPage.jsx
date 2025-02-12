@@ -1,18 +1,24 @@
 import React from 'react';
-import MainImage from './MainImage';
-import AboutSection from './AboutSection';
-import MainVideo from './MainVideo'
-import BrandsLogo from './BrandsLogo';
+import AboutHebe from './AboutSection';
 import NoticePage from './NoticePage';
-import AsideFirst from './AsideFirst';
+import MainVideo from './MainVideo';
+import BrandsLogo from './BrandsLogo';
 import AsideSecond from './AsideSecond';
+import AsideFirst from './AsideFirst';
 import MustHavePicks from './MustHavePicks';
+import MainImage from './MainImage';
+import { Navigate } from 'react-router-dom';
 
-function MainPage() {
+function MainPage({ user }) {
+
+  if (!user) {
+    return <Navigate to="/login" />
+  }
+
   return (
-    <div className='overflow-x-hidden'>
-      <MainImage/>
-      <AboutSection />
+    <div className='flex flex-col box-border overflow-x-hidden min-h-screen'>
+      <MainImage />
+      <AboutHebe />
       <MustHavePicks />
       <MainVideo />
       <BrandsLogo />
