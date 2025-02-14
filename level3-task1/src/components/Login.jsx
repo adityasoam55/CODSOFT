@@ -1,19 +1,22 @@
-import { Form, Formik, useFormik } from "formik";
+import { Form, Formik } from "formik";
 import { FormikInput } from "./Input";
 import React from "react";
 import * as Yup from 'yup';
 import { Link, Navigate } from "react-router-dom";
 import { loginUser } from "./api";
 import withUser from "./withUser";
+import withAlert from "./withAlert";
 
-function Login({ user, setUser }) {
+function Login({ user, setUser, setAlert }) {
 
     function callLoginAPI(values) {
         loginUser(values).then((resp) => {
             const { user, token } = resp.data;
             localStorage.setItem('userToken', token);
             setUser(user);
-            // console.log(user)
+            setAlert({ type: "success", message: "Login Successfull" })
+        }).catch(() => {
+            setAlert({ type: "error", message: "Incorrect Email or Password" });
         })
     }
 
@@ -84,4 +87,4 @@ function Login({ user, setUser }) {
     )
 }
 
-export default withUser(Login);
+export default withAlert(withUser(Login));

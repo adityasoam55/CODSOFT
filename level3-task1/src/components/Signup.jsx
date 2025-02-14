@@ -6,7 +6,7 @@ import { Link, Navigate } from "react-router-dom";
 import { signupUser } from "./api";
 import withUser from "./withUser";
 
-function Signup() {
+function Signup({ user, setUser }) {
 
     function callSignupAPI(values) {
         console.log("calling login API", values.fullname, values.email, values.password)
