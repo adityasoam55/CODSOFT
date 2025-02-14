@@ -78,7 +78,7 @@ function App() {
   return (
     <div className="max-w-screen">
       <UserContext.Provider value={{user, setUser}}>
-        <NavBar cartValue={cartValue} handleLogout={handleLogout} user={user} />
+        <NavBar cartValue={cartValue} handleLogout={handleLogout} />
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/login/" element={<Login  />} />
