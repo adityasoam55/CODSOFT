@@ -8,11 +8,9 @@ import AsideFirst from './AsideFirst';
 import MustHavePicks from './MustHavePicks';
 import MainImage from './MainImage';
 import { Navigate } from 'react-router-dom';
-import { UserContext } from '../App';
+import { withUser } from './withProvider';
 
-function MainPage() {
-
-  const { user } = useContext(UserContext);
+function MainPage({ user }) {
 
   if (!user) {
     return <Navigate to="/login" />
@@ -32,4 +30,4 @@ function MainPage() {
   )
 }
 
-export default MainPage;
+export default withUser(MainPage);

@@ -3,7 +3,7 @@ import { BsHandbag } from 'react-icons/bs';
 import { IoPersonOutline } from 'react-icons/io5';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import withUser from './withUser';
+import { withUser } from './withProvider';
 
 function NavBar({ cartValue, handleLogout, user }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
