@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import withAlert from "./withAlert";
 
 
 const Alert = ({ alert, removeAlert }) => {
+
+    useEffect(function () {
+        if (alert) {
+            const timeout = setTimeout(removeAlert, 3 * 1000);
+
+            return function () {
+                clearTimeout(timeout);
+            }
+        }
+    }, [alert])
+
+
     if (!alert) {
         return;
     }
@@ -18,6 +30,7 @@ const Alert = ({ alert, removeAlert }) => {
             Icon: AiOutlineCloseCircle
         }
     }
+
 
     const { type, message } = alert;
     const { Icon, color } = themeMap[type];
