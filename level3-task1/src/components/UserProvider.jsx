@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { UserContext } from './contexts';
 import Loading from './Loading';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function UserProvider({ children }) {
     const [user, setUser] = useState(null);
@@ -16,17 +17,15 @@ function UserProvider({ children }) {
                 headers: {
                     Authorization: token,
                 },
-            })
-                .then(resp => {
-                    setUser(resp.data);
-                    setLoadingUser(false);
-                })
-                .catch(() => {
-                    localStorage.removeItem('userToken'); // If token is invalid, remove it
-                    setUser(null);
-                    setLoadingUser(false);
-                    navigate('/login'); // Redirect to login if token is invalid
-                });
+            }).then(resp => {
+                setUser(resp.data);
+                setLoadingUser(false);
+            }).catch(() => {
+                localStorage.removeItem('userToken'); // If token is invalid, remove it
+                setUser(null);
+                setLoadingUser(false);
+                navigate('/login'); // Redirect to login if token is invalid
+            });
         } else {
             setUser(null);
             setLoadingUser(false);

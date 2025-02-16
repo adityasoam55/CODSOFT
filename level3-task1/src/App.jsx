@@ -40,7 +40,7 @@ function App() {
     <div className="max-w-screen">
       <UserProvider>
         <AlertProvider>
-          <Alert type="error" message="Login Fail" />
+          <Alert />
           <NavBar cartValue={cartValue} />
           <Routes>
             <Route path="/" element={<MainPage />} />
