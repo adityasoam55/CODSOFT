@@ -40,7 +40,7 @@ export const projects = [
       image: "/project1.png",
       link: "https://level1-task2.netlify.app",
       skills: [
-        "Tailwind CSS", "JavaScript", "React Js", "API Integration", "form Validation",
+        "Tailwind CSS", "Framer-motion", "React Js", "Responsive-design",
       ]
     }
   ];
