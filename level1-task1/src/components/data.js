@@ -33,12 +33,12 @@ export const projects = [
       ]
     },
     {
-      title: "MyEasyCart",
-      subtitle: "React E-commerce",
+      title: "Fanta World",
+      subtitle: "React - landing page",
       description:
-        "A React-based fully responsive e-commerce website, It uses the DummyJson API for fetching the real time data, Fromik and yup libraries are used for the form validation.",
+        "A React-Framer motion based fully responsive  landing page,  smooth animations, a modern UI, and an intuitive user experience",
       image: "/project1.png",
-      link: "https://myeasycart.netlify.app",
+      link: "https://level1-task2.netlify.app",
       skills: [
         "Tailwind CSS", "JavaScript", "React Js", "API Integration", "form Validation",
       ]
