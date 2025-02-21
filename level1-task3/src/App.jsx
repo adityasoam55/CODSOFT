@@ -10,6 +10,8 @@ export default function App() {
     if (value === "C") {
       setExpression("");
       setResult("");
+    } else if (value === "⌫") {
+      setExpression((prev) => prev.slice(0, -1)); // Remove last character
     } else if (value === "=") {
       try {
         setResult(eval(expression).toString());
