@@ -1,32 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import { searchProduct, sortProduct } from './api';
+import { searchProduct } from './api';
 import Product from './Product';
 import Loading from './Loading';
 import Input from './Input';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate, useSearchParams } from 'react-router-dom';
 import { withUser } from './withProvider';
+import { range } from 'lodash';
 
 function AllProducts({ user }) {
+
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [query, setQuery] = useState([])
-  const [sort, setSort] = useState("default");
+  const [page, setPage] = useState(0)
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const params = Object.fromEntries([...searchParams]);
+  let { q, sort, skip } = params;
+
+  q = q || "";
+  sort = sort || "default";
+  skip = skip || 0;
+
+  let pages = Math.ceil(skip / 30);
 
 
   useEffect(function () {
-    const filterProducts = searchProduct({ query });
-
-    filterProducts.then((resp) => {
-      setProducts(resp);
-      setLoading(false);
-      console.log(resp)
-    }).catch(function () {
-      setLoading(false)
-    })
-  }, [query])
-
-  useEffect(() => {
-
     let sortBy;
     let order;
 
@@ -41,16 +39,21 @@ function AllProducts({ user }) {
       order = "desc";
     } else if (sort == "default") {
       sortBy = "default";
-      order="";
+      order = "";
     }
 
-    const sortProducts = sortProduct({ sortBy, order });
+    let productList = searchProduct({ q, skip, sortBy, order });
 
-    sortProducts.then((resp) => {
-      setProducts(resp);
+    productList.then(function (resp) {
+      setPage(Math.ceil(resp.total / 30));
+      setProducts(resp.products);
       setLoading(false);
+    }).catch(function () {
+      setLoading(false)
     })
-  }, [sort])
+  }, [q, skip, sort, ])
+
+
 
   if (!user) {
     return <Navigate to="/login/" />
@@ -67,14 +70,19 @@ function AllProducts({ user }) {
         <Input
           type="text"
           placeholder="Search products..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value.toLowerCase())}
+          value={q}
+          onChange={(e) => {
+            setSearchParams(
+              { ...params, q: e.target.value.toLowerCase(), skip: 0 }, { replace: false });
+          }}
         />
 
         <select
           className="border border-gray-300 bg-gray-200 outline-none rounded-lg px-3 py-1.5"
           value={sort}
-          onChange={(e) => setSort(e.target.value)}
+          onChange={(e) => {
+            setSearchParams({ ...params, sort: e.target.value }, { replace: false });
+          }}
         >
           <option value="default">Default sort</option>
           <option value="highToLow">Price: High to Low</option>
@@ -86,6 +94,23 @@ function AllProducts({ user }) {
       <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
         {products.map((product) => (
           <Product key={product.id} {...product} />
+        ))}
+      </div>
+      <div className='flex justify-center pt-8'>
+        {range(0, page).map((pageNo) => (
+          <Link
+            key={pageNo}
+            to={"?" + new URLSearchParams({ ...params, skip: pageNo * 30 })}
+            className={
+              "px-2 border border-black mx-2 " +
+              (pageNo == pages ? "bg-gray-400" : "bg-gray-300")
+            }
+            onClick={() => {
+              setSkip(pageNo * 30);
+            }}
+          >
+            {pageNo + 1}
+          </Link>
         ))}
       </div>
 
